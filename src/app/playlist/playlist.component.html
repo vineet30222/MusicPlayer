@@ -1,0 +1,13 @@
+<div class="album-tracks" >
+  <h2>My Playlist Tracks</h2>
+  <div *ngFor="let track of this.playlist;let i = index">
+    <div class="well">
+      <h5>{{i+1}}-{{track.trackName}}</h5>
+      <a class="btn btn-primary" href="{{track.trackPreview}}" target="_blank">Preview Track  {{"          "}}</a>
+     
+      <a  class="btn btn-primary" style="margin-left:5px" href="{{track.trackSpotify}}" target="_blank">Play on Spotify</a>
+      <a  class="btn btn-danger" style="margin-left:5px" (click)="onRemove(track.trackName)" >Remove</a>
+   
+    </div>
+  </div>
+</div>

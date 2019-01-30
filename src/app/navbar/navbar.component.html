@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse" >
+      <div class="container-fluid">
+        <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['']">Music Player</a></div>
+      
+     
+          <ul class="nav navbar-nav">
+            <li   routerLinkActive="active">
+              <a style="cursor:pointer"  [routerLink]="['player']">Music Search</a>
+            </li>
+          
+              <li  >
+                <a style="cursor:pointer"routerLinkActive="active" *ngIf="!this.service.isLoggedIn()" [routerLink]="['signin']" >Signin</a>
+              </li>
+              <li  >
+                <a style="cursor:pointer"routerLinkActive="active" *ngIf="!this.service.isLoggedIn()" [routerLink]="['signup']" >Signup</a>
+              </li>
+              <li  >
+                <a style="cursor:pointer"routerLinkActive="active" *ngIf="this.service.isLoggedIn()" (click)="onLogout()" >Logout</a>
+              </li>
+              <li  >
+                <a style="cursor:pointer"routerLinkActive="active" *ngIf="this.service.isLoggedIn()" [routerLink]="['playlist']">My Playlist</a>
+              </li>
+          </ul>
+        </div>
+      
+     
+    </nav>
+  
+
+      
+         

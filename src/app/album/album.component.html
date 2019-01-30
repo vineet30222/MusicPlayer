@@ -1,0 +1,41 @@
+<div id="album" *ngIf="album">
+  <header class="album-header">
+    <div class="row">
+      <div class="col-md-4">
+          <div *ngIf="album.images.length>0">
+              <img  class="album-thumb"src="{{album.images[0].url}}" alt="">
+            </div>
+      </div>
+      <div class="col-md-8">
+       <h4 *ngIf="album.artists.length>0"><span *ngFor="let artist of album.artists">{{artist.name}}</span></h4>
+       <h2>{{album.name}}</h2>
+       <h5>Release Date:{{album.release_date}}</h5>
+         <a class="btn btn-primary" target="_blank" href="{{album.external_urls.spotify}}">View in Spotify</a>
+
+      </div>
+    </div>
+  </header>
+  <div class="album-tracks">
+    <h2>Album Tracks</h2>
+    <div *ngFor="let track of album.tracks.items;let i=index">
+      <div class="well">
+        <h5>{{track.track_number}}-{{track.name}}</h5>
+        <a class="btn btn-primary" href="{{track.preview_url}}" target="_blank">Preview Track  {{"          "}}</a>
+       
+        <a  class="btn btn-primary" style="margin-left:5px" href="{{track.external_urls.spotify}}" target="_blank">Play on Spotify</a>
+        <a  class="btn btn-primary" style="margin-left:5px" (click)="addingToPlaylist(i)"  >Add to Playlist</a>
+       
+      </div>
+      <div class="alert alert-success alert-dismissible" *ngIf="this.spotify.isAdded && i===this.index ">
+         
+        <strong>Success!</strong> Added To Playlist !!
+        <a  class="close" data-dismiss="alert" (click)="close()"aria-label="close">&times;</a>
+      </div>
+      <div class="alert alert-danger alert-dismissible" *ngIf="this.spotify.isError && i===this.index ">
+         
+        <strong>Alert!</strong> Already Added !!
+        <a  class="close" data-dismiss="alert" (click)="close()"aria-label="close">&times;</a>
+      </div>
+    </div>
+  </div>
+</div>
